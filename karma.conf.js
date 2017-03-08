@@ -6,7 +6,6 @@ module.exports = (config) => {
     singleRun: true,
     frameworks: ['mocha'],
     files: [
-      'node_modules/foundation-sites/dist/js/foundation.min.js',
       'app/tests/**/*.test.+(js|jsx)',
     ],
     preprocessors: {

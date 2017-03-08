@@ -1,7 +1,9 @@
 const React = require('react');
 
 const Todo = React.createClass({
-
+  propTypes: {
+    text: React.PropTypes.string.isRequired,
+  },
   render() {
     const { text } = this.props;
     return (
