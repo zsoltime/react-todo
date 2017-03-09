@@ -6,11 +6,12 @@ const TodoList = React.createClass({
     todos: React.PropTypes.arrayOf(
       React.PropTypes.object.isRequired,
     ).isRequired,
+    onToggle: React.PropTypes.func.isRequired,
   },
   render() {
     const { todos } = this.props;
     const list = todos.map(todoItem => (
-      <Todo key={todoItem.id} {...todoItem} />
+      <Todo key={todoItem.id} {...todoItem} onToggle={this.props.onToggle} />
     ));
     return (
       <ol>

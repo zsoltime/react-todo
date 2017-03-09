@@ -4,6 +4,7 @@ const expect = require('expect');
 
 const TodoList = require('TodoList');
 const Todo = require('Todo');
+const uuid = require('node-uuid');
 
 describe('TodoList', () => {
   it('should exist', () => {
@@ -13,16 +14,19 @@ describe('TodoList', () => {
   describe('render', () => {
     const todos = [
       {
-        id: 1,
+        id: uuid(),
         text: 'Test item #1',
+        completed: false,
       },
       {
-        id: 2,
+        id: uuid(),
         text: 'Test item #2',
+        completed: false,
       },
       {
-        id: 3,
+        id: uuid(),
         text: 'Test item #3',
+        completed: false,
       },
     ];
     it('should render the correct number of todos', () => {
