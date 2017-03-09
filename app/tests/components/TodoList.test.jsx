@@ -17,16 +17,19 @@ describe('TodoList', () => {
         id: uuid(),
         text: 'Test item #1',
         completed: false,
+        createdAt: new Date().getTime(),
       },
       {
         id: uuid(),
         text: 'Test item #2',
         completed: false,
+        createdAt: new Date().getTime(),
       },
       {
         id: uuid(),
         text: 'Test item #3',
         completed: false,
+        createdAt: new Date().getTime(),
       },
     ];
     it('should render the correct number of todos', () => {
@@ -42,11 +45,11 @@ describe('TodoList', () => {
       const todoList = TestUtils.renderIntoDocument(
         <TodoList todos={todos} />,
       );
-      const el = TestUtils.scryRenderedDOMComponentsWithTag(todoList, 'li');
+      const el = TestUtils.scryRenderedDOMComponentsWithTag(todoList, 'input');
 
-      expect(el[0].innerText).toBe('Test item #1');
-      expect(el[1].innerText).toBe('Test item #2');
-      expect(el[2].innerText).toBe('Test item #3');
+      expect(el[0].id).toBe(todos[0].id);
+      expect(el[1].id).toBe(todos[1].id);
+      expect(el[2].id).toBe(todos[2].id);
     });
   });
 });

@@ -23,6 +23,8 @@ const TodoApp = React.createClass({
         id: uuid(),
         text,
         completed: false,
+        createdAt: new Date().getTime(),
+        completedAt: undefined,
       },
     ];
     this.setState({
@@ -34,6 +36,7 @@ const TodoApp = React.createClass({
       if (todo.id === id) {
         return Object.assign({}, todo, {
           completed: !todo.completed,
+          completedAt: !todo.completed ? new Date().getTime() : undefined,
         });
       }
       return todo;

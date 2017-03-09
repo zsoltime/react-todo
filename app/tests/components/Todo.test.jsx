@@ -31,6 +31,8 @@ describe('Todo', () => {
         id,
         text: 'write unit tests',
         completed: false,
+        createdAt: new Date().getTime(),
+        completedAt: undefined,
       };
       const spy = expect.createSpy();
       const todo = TestUtils.renderIntoDocument(
