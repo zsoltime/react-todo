@@ -16,16 +16,18 @@ const AddTodo = React.createClass({
   },
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          ref={(node) => { this.task = node; }}
-          placeholder="What do you need to do?"
-        />
-        <button className="button expanded">
-          Add todo
-        </button>
-      </form>
+      <div className="todoapp__footer">
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            ref={(node) => { this.task = node; }}
+            placeholder="What do you need to do?"
+          />
+          <button className="button expanded">
+            Add todo
+          </button>
+        </form>
+      </div>
     );
   },
 });

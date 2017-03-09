@@ -10,13 +10,20 @@ const TodoList = React.createClass({
   },
   render() {
     const { todos } = this.props;
-    const list = todos.map(todoItem => (
-      <Todo key={todoItem.id} {...todoItem} onToggle={this.props.onToggle} />
-    ));
+    const renderTodos = () => {
+      if (todos.length === 0) {
+        return (
+          <li className="container__message">Nothing to do</li>
+        );
+      }
+      return todos.map(todoItem => (
+        <Todo key={todoItem.id} {...todoItem} onToggle={this.props.onToggle} />
+      ));
+    };
     return (
-      <ol>
-        { list }
-      </ol>
+      <ul className="todo">
+        { renderTodos() }
+      </ul>
     );
   },
 

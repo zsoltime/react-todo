@@ -1,0 +1,26 @@
+.todo
+
+  &__item
+    align-items: center
+    display: flex
+    padding: .625rem 1rem
+    transition: background-color .3s ease-in-out
+
+    &--completed
+      color: rgba(black, .3)
+      text-decoration: line-through
+
+    & > :first-child
+      flex: none
+
+    &:hover
+      background-color: rgba(black, .05)
+
+    label
+      display: inline-flex
+      flex-grow: 1
+      flex-wrap: wrap
+
+    small
+      color: rgba(black, .4)
+      flex-basis: 100%

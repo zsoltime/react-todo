@@ -14,20 +14,22 @@ const TodoSearch = React.createClass({
   },
   render() {
     return (
-      <div className="search">
+      <div className="todoapp__filter">
         <input
           type="search"
           placeholder="Search todos"
           ref={(node) => { this.searchText = node; }}
           onChange={this.handleSearch}
         />
-        <input
-          type="checkbox"
-          id="completed"
-          ref={(node) => { this.showCompleted = node; }}
-          onChange={this.handleSearch}
-        />
-        <label htmlFor="completed">Show completed todos</label>
+      <div className="todoapp__completed">
+          <input
+            type="checkbox"
+            id="completed"
+            ref={(node) => { this.showCompleted = node; }}
+            onChange={this.handleSearch}
+          />
+          <label htmlFor="completed">Show completed todos</label>
+        </div>
       </div>
     );
   },
