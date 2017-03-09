@@ -49,10 +49,9 @@ const TodoApp = React.createClass({
     });
   },
   render() {
-    const { todos } = this.state;
-    const filteredTodos = todos.filter(item => (
-      item.text.toLowerCase().indexOf(this.state.searchText) >= 0
-    ));
+    const { todos, showCompleted, searchText } = this.state;
+    const filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
+
     return (
       <div className="row align-center">
         <div className="large-4 medium-6 column">

@@ -5,7 +5,7 @@ const TodoSearch = React.createClass({
     onSearch: React.PropTypes.func.isRequired,
   },
   handleSearch() {
-    const searchText = this.searchText.value.toLowerCase();
+    const searchText = this.searchText.value;
     const showCompleted = this.showCompleted.checked;
     this.props.onSearch({
       searchText,
