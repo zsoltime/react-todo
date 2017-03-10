@@ -3,7 +3,7 @@ const TestUtils = require('react-addons-test-utils');
 const expect = require('expect');
 const uuid = require('node-uuid');
 
-const Todo = require('Todo');
+const { Todo } = require('Todo');
 
 describe('Todo', () => {
   it('should exist', () => {
@@ -27,7 +27,7 @@ describe('Todo', () => {
   // });
 
   describe('toggle', () => {
-    it('should call onToggle() with id on click', () => {
+    it('should dispatch TOGGLE_TODO action on click', () => {
       const id = uuid();
       const task = {
         id,
@@ -38,13 +38,16 @@ describe('Todo', () => {
       };
       const spy = expect.createSpy();
       const todo = TestUtils.renderIntoDocument(
-        <Todo {...task} onToggle={spy} />,
+        <Todo {...task} dispatch={spy} />,
       );
       const el = TestUtils.findRenderedDOMComponentWithTag(todo, 'input');
 
       TestUtils.Simulate.change(el);
 
-      expect(spy).toHaveBeenCalledWith(id);
+      expect(spy).toHaveBeenCalledWith({
+        type: 'TOGGLE_TODO',
+        id: task.id,
+      });
     });
   });
 });

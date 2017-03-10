@@ -1,12 +1,12 @@
 const React = require('react');
-const Todo = require('Todo');
+const { connect } = require('react-redux');
+import Todo from 'Todo';
 
-const TodoList = React.createClass({
+export const TodoList = React.createClass({
   propTypes: {
     todos: React.PropTypes.arrayOf(
       React.PropTypes.object.isRequired,
     ).isRequired,
-    onToggle: React.PropTypes.func.isRequired,
   },
   render() {
     const { todos } = this.props;
@@ -17,7 +17,7 @@ const TodoList = React.createClass({
         );
       }
       return todos.map(todoItem => (
-        <Todo key={todoItem.id} {...todoItem} onToggle={this.props.onToggle} />
+        <Todo key={todoItem.id} {...todoItem} />
       ));
     };
     return (
@@ -26,7 +26,6 @@ const TodoList = React.createClass({
       </ul>
     );
   },
-
 });
 
-module.exports = TodoList;
+export default connect(state => ({ todos: state.todos }))(TodoList);
