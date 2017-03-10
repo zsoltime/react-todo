@@ -21,7 +21,7 @@ const TodoSearch = React.createClass({
           ref={(node) => { this.searchText = node; }}
           onChange={this.handleSearch}
         />
-      <div className="todoapp__completed">
+        <div className="todoapp__completed">
           <input
             type="checkbox"
             id="completed"
