@@ -25,4 +25,40 @@ describe('Reducers', () => {
       expect(res).toBe(true);
     });
   });
+
+  describe('todosReducer', () => {
+    it('should add new todo', () => {
+      const action = {
+        type: 'ADD_TODO',
+        text: 'Buy milk',
+      };
+      const res = reducers.todosReducer(df([]), df(action));
+
+      expect(res.length).toBe(1);
+      expect(res[0].text).toEqual(action.text);
+    });
+
+    it('should toggle todo', () => {
+      const action = {
+        type: 'TOGGLE_TODO',
+        id: 0,
+      };
+      const state = [{
+        id: 0,
+        text: 'Buy milk',
+        completed: false,
+        createdAt: new Date().getTime(),
+        completedAt: undefined,
+      }];
+      const res = reducers.todosReducer(df(state), df(action));
+
+      expect(res[0].completed).toBe(true);
+      expect(res[0].completedAt).toBeA('number');
+
+      const res2 = reducers.todosReducer(df(res), df(action));
+
+      expect(res2[0].completed).toBe(false);
+      expect(res2[0].completedAt).toBe(undefined);
+    });
+  });
 });
