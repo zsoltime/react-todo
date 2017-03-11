@@ -13,10 +13,6 @@ store.subscribe(() => {
   console.log('New state', store.getState());
 });
 
-store.dispatch(actions.addTodo('Buy tea'));
-store.dispatch(actions.setSearchText('tea'));
-store.dispatch(actions.toggleShowCompleted());
-
 require('style!css!sass!applicationStyles');
 
 render(

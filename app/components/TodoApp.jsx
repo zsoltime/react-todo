@@ -3,7 +3,7 @@ const uuid = require('node-uuid');
 
 import TodoList from 'TodoList';
 import AddTodo from 'AddTodo';
-const TodoSearch = require('TodoSearch');
+import TodoSearch from 'TodoSearch';
 const TodoAPI = require('TodoAPI');
 
 const TodoApp = React.createClass({
