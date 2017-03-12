@@ -67,7 +67,7 @@ describe('TodoList', () => {
       const todoList = TestUtils.renderIntoDocument(
         <TodoList todos={[]} />,
       );
-      const el = TestUtils.scryRenderedDOMComponentsWithClass(todoList, 'container__message');
+      const el = TestUtils.scryRenderedDOMComponentsWithClass(todoList, 'todoapp__message');
 
       expect(el.length).toBe(1);
     });
