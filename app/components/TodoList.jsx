@@ -1,5 +1,6 @@
-const React = require('react');
-const { connect } = require('react-redux');
+import React from 'react';
+import { connect } from 'react-redux';
+
 import Todo from 'Todo';
 import TodoAPI from 'TodoAPI';
 
@@ -8,6 +9,8 @@ export const TodoList = React.createClass({
     todos: React.PropTypes.arrayOf(
       React.PropTypes.object.isRequired,
     ).isRequired,
+    showCompleted: React.PropTypes.bool.isRequired,
+    searchText: React.PropTypes.string.isRequired,
   },
   render() {
     const { todos, showCompleted, searchText } = this.props;
@@ -30,4 +33,4 @@ export const TodoList = React.createClass({
   },
 });
 
-export default connect(state => { return state; })(TodoList);
+export default connect(state => state)(TodoList);
