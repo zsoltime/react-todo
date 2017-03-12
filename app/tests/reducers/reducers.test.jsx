@@ -61,4 +61,22 @@ describe('Reducers', () => {
       expect(res2[0].completedAt).toBe(undefined);
     });
   });
+
+  it('should add existing todos', () => {
+    const todos = [{
+      id: '111',
+      text: 'Buy milk',
+      completed: false,
+      createdAt: new Date().getTime(),
+      completedAt: undefined,
+    }];
+    const action = {
+      type: 'ADD_TODOS',
+      todos,
+    };
+    const res = reducers.todosReducer(df([]), df(action));
+
+    expect(res.length).toBe(1);
+    expect(res[0]).toEqual(todos[0]);
+  });
 });

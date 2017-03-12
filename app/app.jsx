@@ -7,11 +7,18 @@ const TodoApp = require('TodoApp');
 
 const actions = require('actions');
 const store = require('configureStore').config();
+const TodoAPI = require('TodoAPI');
 
 store.subscribe(() => {
+  const state = store.getState();
+  TodoAPI.setTodos(state.todos);
+
   // eslint-disable-next-line no-console
   console.log('New state', store.getState());
 });
+
+const intialTodos = TodoAPI.getTodos();
+store.dispatch(actions.addTodos(intialTodos));
 
 require('style!css!sass!applicationStyles');
 
