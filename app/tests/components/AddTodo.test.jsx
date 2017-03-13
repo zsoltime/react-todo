@@ -1,8 +1,9 @@
-const React = require('react');
-const TestUtils = require('react-addons-test-utils');
-const expect = require('expect');
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
+import expect from 'expect';
 
-const { AddTodo } = require('AddTodo');
+import { AddTodo } from 'AddTodo';
+import * as actions from 'actions';
 
 describe('AddTodo', () => {
   it('should exist', () => {
@@ -10,10 +11,7 @@ describe('AddTodo', () => {
   });
   it('should dispatch ADD_TODO with valid data', () => {
     const todoText = 'Check mail';
-    const action = {
-      type: 'ADD_TODO',
-      text: todoText,
-    };
+    const action = actions.startAddTodo(todoText);
     const spy = expect.createSpy();
     const addTodo = TestUtils.renderIntoDocument(
       <AddTodo dispatch={spy} />,
