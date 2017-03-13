@@ -11,7 +11,7 @@ export const AddTodo = React.createClass({
     const { dispatch } = this.props;
     const task = this.task.value;
     if (task.length > 0) {
-      dispatch(actions.addTodo(task));
+      dispatch(actions.startAddTodo(task));
       this.task.value = '';
     } else {
       this.task.focus();

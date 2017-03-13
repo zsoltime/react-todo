@@ -1,5 +1,7 @@
-const { combineReducers, createStore, compose } = require('redux');
-const { searchTextReducer, showCompletedReducer, todosReducer } = require('reducers');
+import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
+import { searchTextReducer, showCompletedReducer, todosReducer } from 'reducers';
 
 export const config = (initialState = {}) => {
   const reducer = combineReducers({
@@ -8,6 +10,7 @@ export const config = (initialState = {}) => {
     todos: todosReducer,
   });
   const store = createStore(reducer, initialState, compose(
+    applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f,
   ));
 
