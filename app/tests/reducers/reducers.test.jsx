@@ -44,27 +44,28 @@ describe('Reducers', () => {
       expect(res[0]).toEqual(action.todo);
     });
 
-    it('should toggle todo', () => {
-      const action = {
-        type: 'TOGGLE_TODO',
-        id: 0,
-      };
-      const state = [{
+    it('should update todo', () => {
+      const todos = [{
         id: 0,
         text: 'Buy milk',
-        completed: false,
+        completed: true,
         createdAt: new Date().getTime(),
-        completedAt: undefined,
+        completedAt: new Date().getTime(),
       }];
-      const res = reducers.todosReducer(df(state), df(action));
+      const updates = {
+        completed: false,
+        completedAt: null,
+      };
+      const action = {
+        type: 'UPDATE_TODO',
+        id: todos[0].id,
+        updates,
+      };
+      const res = reducers.todosReducer(df(todos), df(action));
 
-      expect(res[0].completed).toBe(true);
-      expect(res[0].completedAt).toBeA('number');
-
-      const res2 = reducers.todosReducer(df(res), df(action));
-
-      expect(res2[0].completed).toBe(false);
-      expect(res2[0].completedAt).toBe(undefined);
+      expect(res[0].completed).toBe(updates.completed);
+      expect(res[0].completedAt).toBe(updates.completedAt);
+      expect(res[0].text).toEqual(todos[0].text);
     });
   });
 

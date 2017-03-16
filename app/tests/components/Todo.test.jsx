@@ -1,9 +1,10 @@
-const React = require('react');
-const TestUtils = require('react-addons-test-utils');
-const expect = require('expect');
-const uuid = require('node-uuid');
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
+import expect from 'expect';
+import uuid from 'node-uuid';
 
-const { Todo } = require('Todo');
+import * as actions from 'actions';
+import { Todo } from 'Todo';
 
 describe('Todo', () => {
   it('should exist', () => {
@@ -36,6 +37,8 @@ describe('Todo', () => {
         createdAt: new Date().getTime(),
         completedAt: undefined,
       };
+      const action = actions.startToggleTodo(task.id, !task.completed);
+
       const spy = expect.createSpy();
       const todo = TestUtils.renderIntoDocument(
         <Todo {...task} dispatch={spy} />,
@@ -44,10 +47,7 @@ describe('Todo', () => {
 
       TestUtils.Simulate.change(el);
 
-      expect(spy).toHaveBeenCalledWith({
-        type: 'TOGGLE_TODO',
-        id: task.id,
-      });
+      expect(spy).toHaveBeenCalledWith(action);
     });
   });
 });

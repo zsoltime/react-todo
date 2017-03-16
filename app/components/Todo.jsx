@@ -32,7 +32,9 @@ export const Todo = React.createClass({
           type="checkbox"
           checked={completed}
           id={id}
-          onChange={() => { dispatch(actions.toggleTodo(id)); }}
+          onChange={() => {
+            dispatch(actions.startToggleTodo(id, !completed));
+          }}
         />
         <label htmlFor={id}>
           {text}
