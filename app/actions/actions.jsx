@@ -40,6 +40,25 @@ export const addTodos = (todos) => {
   };
 }
 
+export const startAddTodos = () => {
+  return (dispatch, getState) => {
+    const todosRef = firebaseRef.child('todos');
+    return todosRef.once('value').then((snapshot) => {
+      const todos = snapshot.val() || {};
+      const parsedTodos = [];
+
+      Object.keys(todos).forEach((id) => {
+        parsedTodos.push({
+          id,
+          ...todos[id],
+        });
+      });
+
+      dispatch(addTodos(parsedTodos));
+    });
+  };
+};
+
 export const toggleShowCompleted = () => {
   return {
     type: 'TOGGLE_SHOW_COMPLETED',

@@ -15,15 +15,15 @@ export const TodoList = React.createClass({
   render() {
     const { todos, showCompleted, searchText } = this.props;
     const renderTodos = () => {
-      if (todos.length === 0) {
+      const filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
+      if (filteredTodos.length === 0) {
         return (
           <li className="todoapp__message">Nothing to do</li>
         );
       }
-      return TodoAPI.filterTodos(todos, showCompleted, searchText)
-        .map(todoItem => (
-          <Todo key={todoItem.id} {...todoItem} />
-        ));
+      return filteredTodos.map(todoItem => (
+        <Todo key={todoItem.id} {...todoItem} />
+      ));
     };
     return (
       <ul className="todo">
