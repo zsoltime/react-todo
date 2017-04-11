@@ -18,7 +18,7 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: true,
+        warnings: false,
         screw_ie8: true,
       },
       output: {
@@ -54,7 +54,6 @@ module.exports = {
       {
         loaders: [
           `babel-loader?${JSON.stringify(babelSettings)}`,
-          'eslint-loader',
         ],
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,

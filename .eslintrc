@@ -19,7 +19,7 @@
     "import/no-unresolved": 0,
     "import/no-webpack-loader-syntax": 1,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prefer-es6-class": 0,
-    "react/no-string-refs": 1
+    "react/no-string-refs": 1,
+    "react/prefer-es6-class": 0
   }
 }
