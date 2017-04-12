@@ -51,14 +51,14 @@ module.exports = {
     root: __dirname,
     modulesDirectories: [
       'node_modules',
-      './app/components',
       './app/api',
+      './app/components',
     ],
     alias: {
-      applicationStyles: 'app/styles/app.sass',
       actions: 'app/actions/actions.jsx',
-      reducers: 'app/reducers/reducers.jsx',
+      applicationStyles: 'app/styles/app.sass',
       configureStore: 'app/store/configureStore.jsx',
+      reducers: 'app/reducers/reducers.jsx',
     },
     extensions: ['', '.js', '.jsx'],
   },
