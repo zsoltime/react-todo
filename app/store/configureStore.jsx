@@ -1,10 +1,16 @@
-import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
-import { searchTextReducer, showCompletedReducer, todosReducer } from 'reducers';
+import {
+  authReducer,
+  searchTextReducer,
+  showCompletedReducer,
+  todosReducer
+} from 'reducers';
 
 export const config = (initialState = {}) => {
   const reducer = combineReducers({
+    auth: authReducer,
     searchText: searchTextReducer,
     showCompleted: showCompletedReducer,
     todos: todosReducer,

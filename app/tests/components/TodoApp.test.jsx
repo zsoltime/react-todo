@@ -2,10 +2,9 @@ const React = require('react');
 const { Provider } = require('react-redux');
 const TestUtils = require('react-addons-test-utils');
 const expect = require('expect');
-const uuid = require('node-uuid');
 
 const configureStore = require('configureStore');
-import { TodoApp } from 'TodoApp';
+import TodoApp from 'TodoApp';
 import TodoList from 'TodoList';
 
 describe('TodoApp', () => {
