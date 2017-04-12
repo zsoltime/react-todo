@@ -20,6 +20,13 @@
     "import/no-webpack-loader-syntax": 1,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/no-string-refs": 1,
-    "react/prefer-es6-class": 0
+    "react/prefer-es6-class": 0,
+    "comma-dangle": ["error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "ignore",
+    }]
   }
 }

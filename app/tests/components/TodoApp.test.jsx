@@ -5,7 +5,7 @@ const expect = require('expect');
 const uuid = require('node-uuid');
 
 const configureStore = require('configureStore');
-const TodoApp = require('TodoApp');
+import { TodoApp } from 'TodoApp';
 import TodoList from 'TodoList';
 
 describe('TodoApp', () => {

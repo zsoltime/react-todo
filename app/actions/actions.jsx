@@ -1,4 +1,4 @@
-import firebase, { firebaseRef } from 'app/firebase';
+import firebase, { firebaseRef, githubProvider } from 'app/firebase';
 
 export const setSearchText = (searchText) => {
   return {
@@ -86,4 +86,22 @@ export const startToggleTodo = (id, completed) => {
       dispatch(updateTodo(id, updates));
     });
   }
+};
+
+export const startLogin = () => {
+  return (dispatch, getState) => {
+    return firebase.auth().signInWithPopup(githubProvider).then((result) => {
+      console.log('auth worked', result);
+    }, (error) => {
+      console.error('Unable to auth', error);
+    });
+  };
+};
+
+export const startLogout = () => {
+  return (dispatch, getState) => {
+    return firebase.auth().signOut().then(() => {
+      console.log('Logged out');
+    });
+  };
 };
