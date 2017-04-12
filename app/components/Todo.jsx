@@ -1,48 +1,57 @@
-const React = require('react');
-const { connect } = require('react-redux');
-const fecha = require('fecha');
-const actions = require('actions');
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import fecha from 'fecha';
 
-export const Todo = React.createClass({
-  propTypes: {
-    id: React.PropTypes.string.isRequired,
-    text: React.PropTypes.string.isRequired,
-    completed: React.PropTypes.bool.isRequired,
-    createdAt: React.PropTypes.number.isRequired,
-    completedAt: React.PropTypes.number,
-    dispatch: React.PropTypes.func.isRequired,
-  },
-  getDefaultProps() {
-    return {
-      completedAt: undefined,
-    };
-  },
-  render() {
-    const { id, text, completed, createdAt, completedAt, dispatch } = this.props;
-    const todoClassName = completed ? 'todo__item todo__item--completed' : 'todo__item';
-    const renderDate = () => {
-      const message = completed ? 'Completed' : 'Created';
-      const timestamp = completed ? completedAt : createdAt;
+import * as actions from 'actions';
 
-      return `${message} ${fecha.format(timestamp, 'MMM Do YYYY @ h:mm a')}`;
-    };
-    return (
-      <li className={todoClassName}>
-        <input
-          type="checkbox"
-          checked={completed}
-          id={id}
-          onChange={() => {
-            dispatch(actions.startToggleTodo(id, !completed));
-          }}
-        />
-        <label htmlFor={id}>
-          {text}
-          <small>{renderDate()}</small>
-        </label>
-      </li>
-    );
-  },
-});
+export const Todo = (props) => {
+  const {
+    createdAt,
+    completed,
+    completedAt,
+    dispatch,
+    id,
+    text,
+  } = props;
+  const todoClassName = completed ?
+    'todo__item todo__item--completed' :
+    'todo__item';
+  const renderDate = () => {
+    const message = completed ? 'Completed' : 'Created';
+    const timestamp = completed ? completedAt : createdAt;
+
+    return `${message} ${fecha.format(timestamp, 'MMM Do YYYY @ h:mm a')}`;
+  };
+
+  return (
+    <li className={todoClassName}>
+      <input
+        type="checkbox"
+        checked={completed}
+        id={id}
+        onChange={() => {
+          dispatch(actions.startToggleTodo(id, !completed));
+        }}
+      />
+      <label htmlFor={id}>
+        {text}
+        <small>{renderDate()}</small>
+      </label>
+    </li>
+  );
+};
+
+Todo.defaultProps = {
+  completedAt: undefined,
+};
+
+Todo.propTypes = {
+  id: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired,
+  createdAt: PropTypes.number.isRequired,
+  completedAt: PropTypes.number,
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default connect()(Todo);

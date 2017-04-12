@@ -1,13 +1,17 @@
-import React, { createClass } from 'react';
+import React, { Component, PropTypes } from 'react';
 import * as Redux from 'react-redux';
 
 import * as actions from 'actions';
 
-const Login = createClass({
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.onLogin = this.onLogin.bind(this);
+  }
   onLogin() {
     const { dispatch } = this.props;
     dispatch(actions.startLogin());
-  },
+  }
   render() {
     return (
       <div>
@@ -27,6 +31,10 @@ const Login = createClass({
       </div>
     );
   }
-});
+}
+
+Login.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default Redux.connect()(Login);

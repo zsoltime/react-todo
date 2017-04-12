@@ -1,11 +1,12 @@
-const React = require('react');
-const { connect } = require('react-redux');
-const actions = require('actions');
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import * as actions from 'actions';
 
-export const AddTodo = React.createClass({
-  propTypes: {
-    dispatch: React.PropTypes.func.isRequired,
-  },
+export class AddTodo extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
   handleSubmit(e) {
     e.preventDefault();
     const { dispatch } = this.props;
@@ -16,7 +17,7 @@ export const AddTodo = React.createClass({
     } else {
       this.task.focus();
     }
-  },
+  }
   render() {
     return (
       <div className="todoapp__footer">
@@ -32,7 +33,11 @@ export const AddTodo = React.createClass({
         </form>
       </div>
     );
-  },
-});
+  }
+}
+
+AddTodo.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default connect()(AddTodo);
